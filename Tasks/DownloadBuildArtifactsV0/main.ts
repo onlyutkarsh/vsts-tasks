@@ -142,6 +142,12 @@ async function main(): Promise<void> {
                 reject(reason);
                 return;
             });
+
+            if (!definitions || definitions.length < 1) {
+                reject(tl.loc("InvalidBuildDefinitionID", definitionId));
+                return;
+            }
+
             definitionId = String(definitions[0].id);
             console.log(tl.loc("DefinitionIDFound", definitionIdSpecified, definitionId));
         }
